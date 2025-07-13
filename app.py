@@ -24,7 +24,7 @@ model = nn.Sequential(
     activation,
     nn.Linear(config["hidden2"], 2)
 )
-model.load_state_dict(torch.load("csv_folder/pytorch_trainingdata.pth"))
+model.load_state_dict(torch.load("csv_folder/pytorch_traindata.pth"))
 model.eval()
 
 
