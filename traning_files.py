@@ -68,7 +68,7 @@ def objective(trial):
             optimizer.step()
 
     if trial.number == 0 or loss.item() < objective.best_loss:
-        torch.save(model.state_dict(),"csv_folder/pytorch_traindata.pth")
+        torch.save(model.state_dict(),"csv_folder/pytorch_trainingdata.pth")
         torch.save({
             "hidden1": hidden1,
             "hidden2": hidden2,
