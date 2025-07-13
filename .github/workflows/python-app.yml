@@ -1,0 +1,44 @@
+name: Flask AI App - CI Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.13'
+
+    - name: Install requirements
+      run: |
+        pip install -r pytorch_project/requirements.txt
+
+    - name: Check model file exists
+      run: |
+        if [ ! -f pytorch_project/csv_folder/pytorch_traindata.pth ]; then
+          echo "Model file missing!"
+          exit 1
+        else
+          echo "Model file exists."
+        fi
+
+    - name: Test Flask app response
+      run: |
+        echo "import sys" > test_app.py
+        echo "sys.path.insert(0, 'pytorch_project')" >> test_app.py
+        echo "from app import app" >> test_app.py
+        echo "client = app.test_client()" >> test_app.py
+        echo "res = client.get('/')" >> test_app.py
+        echo "assert res.status_code == 200" >> test_app.py
+        python test_app.py
+
