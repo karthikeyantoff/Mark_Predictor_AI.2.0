@@ -28,7 +28,7 @@ class MyDataset(Dataset):
         return x, y
 
 #Load Data
-csv_path ="pytorch_project/csv_folder/csvpost_files.csv"
+csv_path ="csv_folder/csvpost_files.csv"
 dataset = MyDataset(csv_path)
 loader = DataLoader(dataset, batch_size=32, shuffle=True)
 
@@ -68,12 +68,12 @@ def objective(trial):
             optimizer.step()
 
     if trial.number == 0 or loss.item() < objective.best_loss:
-        torch.save(model.state_dict(),"pytorch_project/csv_folder/pytorch_traindata.pth")
+        torch.save(model.state_dict(),"csv_folder/pytorch_traindata.pth")
         torch.save({
             "hidden1": hidden1,
             "hidden2": hidden2,
             "activation": act_name
-        }, "pytorch_project/csv_folder/model_config.pth")
+        }, "csv_folder/model_config.pth")
         objective.best_loss = loss.item()
     return loss.item()
 
