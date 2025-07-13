@@ -21,11 +21,11 @@ jobs:
 
     - name: Install requirements
       run: |
-        pip install -r pytorch_project/requirements.txt
+        pip install -r requirements.txt
 
     - name: Check model file exists
       run: |
-        if [ ! -f pytorch_project/csv_folder/pytorch_traindata.pth ]; then
+        if [ ! -f csv_folder/pytorch_traindata.pth ]; then
           echo "Model file missing!"
           exit 1
         else
