@@ -35,7 +35,7 @@ jobs:
     - name: Test Flask app response
       run: |
         echo "import sys" > test_app.py
-        echo "sys.path.insert(0,)" >> test_app.py
+        echo "sys.path.insert(0,'pytorch_project')" >> test_app.py
         echo "from app import app" >> test_app.py
         echo "client = app.test_client()" >> test_app.py
         echo "res = client.get('/')" >> test_app.py
