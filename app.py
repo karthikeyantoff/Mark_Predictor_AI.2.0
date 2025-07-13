@@ -5,7 +5,7 @@ import torch.nn as nn
 app = Flask(__name__)
 
 #Load model config
-config = torch.load("pytorch_project/csv_folder/model_config.pth")
+config = torch.load("csv_folder/model_config.pth")
 activation_map = {
     "relu": nn.ReLU(),
     "tanh": nn.Tanh(),
