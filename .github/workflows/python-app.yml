@@ -21,7 +21,7 @@ jobs:
 
     - name: Install requirements
       run: |
-        pip install -r pytorch_project/requirements.txt
+        pip install -r pytorch_project/csv_folder/requirements.txt
 
     - name: Check model file exists
       run: |
